@@ -27,7 +27,7 @@ public class WalletController {
     }
 
     @GetMapping("/wallets/{walletId}")
-    public ResponseEntity<WalletBalanceResponse> getBalance(@PathVariable UUID walletId) {
+    public ResponseEntity<WalletBalanceResponse> getBalance(@PathVariable UUID walletId) throws WalletNotFoundException {
         Long balance = walletService.getBalance(walletId);
         return ResponseEntity.ok(new WalletBalanceResponse(walletId, balance));
     }
